@@ -2,6 +2,7 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -21,7 +22,6 @@ public class LionTest {
     public void getKittens() throws Exception {
         Lion lion = new Lion("Самка", feline);
         int actualKittens = lion.getKittens();
-        Mockito.when(feline.getKittens()).thenReturn(1);
         assertEquals(0, actualKittens);
     }
 
@@ -36,10 +36,9 @@ public class LionTest {
     @Test
     public void getFood() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        List<String> mocList = Arrays.asList("Животные", "Птицы", "Рыба");
-        Mockito.when(lion.getFood()).thenReturn(mocList);
-        List<String> actualList = lion.getFood();
-        List<String> expectedList = Arrays.asList("Животные", "Птицы", "Рыба");
-        assertEquals(expectedList, actualList);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));
+        List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");
+        List<String> actualEatMeat = lion.getFood();
+        assertEquals(expectedEatMeat, actualEatMeat);
     }
 }
