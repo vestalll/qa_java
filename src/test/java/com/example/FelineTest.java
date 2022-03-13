@@ -20,8 +20,8 @@ public class FelineTest {
 
     @Test
     public void getFamily() {
-        String actualFamaly = feline.getFamily();
-        assertEquals("Кошачьи", actualFamaly);
+        String actualFamily = feline.getFamily();
+        assertEquals("Кошачьи", actualFamily);
     }
 
     @Test
